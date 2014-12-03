@@ -11,6 +11,17 @@ using namespace std;
  * Parameters for EC and transform into constants
  */
 
+/*
+#define PRIME_STR "11"
+#define A_STR "1"
+#define B_STR "6"
+*/
+
+
+
+
+
+
 #define PRIME_STR "57896044618658097711785492504343953926634992332820282019728792003956564819203"
 #define ORDER_STR "57896044618658097711785492504343953926473211886304323019964499781607006751467"
 #define A_STR  "-3"
@@ -103,14 +114,16 @@ class ECsystem{
 		mpz_class pointCompress(ECpoint e);
 		ECpoint pointDecompress(mpz_class compressedPoint);
 	public:
-
+		//Zp power(Zp base, mpz_class pow);
+		//mpz_class pointCompress(ECpoint e);
+		//ECpoint pointDecompress(mpz_class compressedPoint);
 		ECsystem(){ G = ECpoint(GX, GY);}
 		ECpoint getPublicKey(){ return publicKey;}
 		
 		pair <ECpoint, mpz_class> generateKeys();		
 
 		
-		pair<mpz_class,mpz_class> encrypt(ECpoint publicKey, mpz_class privateKey, Zp plaintext);
+		pair<mpz_class,mpz_class> encrypt(ECpoint publicKey, mpz_class privateKey, mpz_class plaintext);
 		mpz_class decrypt(pair<mpz_class, mpz_class> cm);
 };
 
